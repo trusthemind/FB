@@ -7,10 +7,7 @@ const Home = () => {
 
     return (
         <>
-            
-            <NavLink to='/sign-up'>Sign Up</NavLink>
-            <br />
-            <NavLink to='/log-in'>Log In</NavLink>
+           HOME PAGE
         </>
     );
 }
