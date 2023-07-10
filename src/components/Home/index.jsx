@@ -7,7 +7,10 @@ const Home = () => {
 
     return (
         <>
-           HOME PAGE
+           <div>
+            <h1>Tatto Art</h1>
+            <h3></h3>
+           </div>
         </>
     );
 }

@@ -6,6 +6,7 @@ import { auth } from '../../firebase';
 const Signup = () => {
     const navigate = useNavigate();
 
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
 
@@ -35,6 +36,19 @@ const Signup = () => {
                     <div>
                         <h1> FocusApp </h1>
                         <form>
+                            <div>
+                                <label htmlFor="Name">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    label="Name"
+                                    value={email}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                    placeholder="Name"
+                                />
+                            </div>
                             <div>
                                 <label htmlFor="email-address">
                                     Email address

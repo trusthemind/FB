@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,17 +10,71 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
-header
-{
+
+#root, body, html {
+  width: 100%;
+  height: 100%;
+}
+
+header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  padding: 15px 75px;
+  padding: 10px 25px; 
 
-  img
-  {
-    height: 75px;
+  img {
+  height: 75px;
+ }
+ div {
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  label {
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 5px 1.5px rgba(0,0,0,0.75);
+    height: 20px;
+    width: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #fdfdff;
+
+    input[type="checkbox"] {
+      display: none;
+
+      &:checked + span {
+        transform: translateX(100%);
+        background: url("../public/img/moon.png") center center no-repeat;
+      }
+    }
+
+    span {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: url("../public/img/sun.png") center center no-repeat;
+      transition: transform 0.3s ease;
+
+    }
   }
+}
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px 0;
 }

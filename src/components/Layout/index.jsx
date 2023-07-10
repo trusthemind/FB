@@ -1,4 +1,4 @@
-import { Outlet,NavLink } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { auth } from '../../firebase';
 function Layout() {
@@ -13,16 +13,23 @@ function Layout() {
             unsubscribe();
         };
     }, []);
+    
     return (
         <>
             <header>
-            <img src={process.env.PUBLIC_URL + "icon.png"} alt=""/>    {currentUser && <p>Welcome Home, {currentUser.email}</p>}
+                {/* style={{ filter: "invert(100%)" }} */}
+                <img src={process.env.PUBLIC_URL + "img/icon.png"} />
+                <div>
+                    <label htmlFor="theme">
+                        <input type="checkbox" id="theme" />
+                        <span></span>
+                    </label>
+                    {currentUser && <p>Welcome Home, {currentUser.email}</p>}
+                </div>
             </header>
-            <NavLink to='/sign-up'>Sign Up</NavLink>
-            <br />
-            <NavLink to='/log-in'>Log In</NavLink>
-            <footer>fotter</footer>
+            <NavLink to={"sign-up"}>sign in</NavLink>
             <Outlet></Outlet>
+            <footer>fotter</footer>
         </>
     );
 }
