@@ -1,9 +1,14 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { auth } from '../../firebase';
-function Layout() {
-    const [currentUser, setcurrentUser] = useState(null)
+import { changeTheme } from "../services/action";
+import { connect } from "react-redux";
+
+function Layout({ theme, changeTheme }) {
+    const [currentUser, setcurrentUser] = useState(null);
+    const [themeState, setthemeState] = useState(false);
     const user = auth.currentUser;
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setcurrentUser(currentUser);
@@ -13,25 +18,52 @@ function Layout() {
             unsubscribe();
         };
     }, []);
-    
+
+    const toggleTheme = () => {
+        setthemeState(!themeState)
+        themeState ? changeTheme("light") : changeTheme("dark");
+        console.log(themeState);
+    }
+
     return (
         <>
             <header>
                 {/* style={{ filter: "invert(100%)" }} */}
-                <img src={process.env.PUBLIC_URL + "img/icon.png"} />
+                <img src={process.env.PUBLIC_URL + "img/icon.png"} alt="Logo" />
                 <div>
                     <label htmlFor="theme">
-                        <input type="checkbox" id="theme" />
+                        <input
+                            type="checkbox"
+                            id="theme"
+                            onChange={toggleTheme}
+                            checked={theme === "dark" ? true : false}
+                        />
                         <span></span>
                     </label>
                     {currentUser && <p>Welcome Home, {currentUser.email}</p>}
                 </div>
             </header>
-            <NavLink to={"sign-up"}>sign in</NavLink>
+            <main>
             <Outlet></Outlet>
-            <footer>fotter</footer>
+            </main>
+            <footer>
+                footer
+                <NavLink to={"sign-up"}>sign in</NavLink>
+            </footer>
         </>
     );
 }
 
-export default Layout;
+const mapState = (state) => {
+    return {
+        theme: state.theme
+    };
+};
+
+const mapDispatch = (dispatch) => {
+    return {
+        changeTheme: (val) => dispatch(changeTheme(val))
+    };
+};
+
+export default connect(mapState, mapDispatch)(Layout);
