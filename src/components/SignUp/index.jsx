@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { Form, Button, Input, Card } from 'antd';
+import "../LogIn/style.scss"
+import "./style.scss"
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -17,7 +20,6 @@ const Signup = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
-                console.log(user)
                 navigate("/")
             })
             .catch((error) => {
@@ -25,78 +27,47 @@ const Signup = () => {
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
             });
-
-
     }
 
     return (
-        <main >
-            <section>
-                <div>
-                    <div>
-                        <h1> FocusApp </h1>
-                        <form>
-                            <div>
-                                <label htmlFor="Name">
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    label="Name"
-                                    value={email}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                    placeholder="Name"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email-address">
-                                    Email address
-                                </label>
-                                <input
-                                    type="email"
-                                    label="Email address"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    placeholder="Email address"
-                                />
-                            </div>
+        <div className='background'>
+            <Form name='sign-up'
+                autoComplete="on">
+                <Form.Item
+                    label="Name"
+                    name="name"
+                    rules={[{ required: true, message: "Please input your name" }]}>
+                    <Input onInput={(e) => setName(e.target.value)} value={name} />
+                </Form.Item>
 
-                            <div>
-                                <label htmlFor="password">
-                                    Password
-                                </label>
-                                <input
-                                    type="password"
-                                    label="Create password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                    placeholder="Password"
-                                />
-                            </div>
+                <Form.Item label="E-mail"
+                    name="email"
+                    className='input'
+                    rules={[{ required: true, message: 'Please input correct your e-mail!' }]}>
+                    <Input onInput={(e) => setEmail(e.target.value)} value={email} />
+                </Form.Item>
 
-                            <button
-                                type="submit"
-                                onClick={onSubmit}
-                            >
-                                Sign up
-                            </button>
+                <Form.Item label="Password"
+                    name="password"
+                    rules={[{ required: true, message: 'Please input correct your passsword!' }]}>
+                    <Input.Password onInput={(e) => setPassword(e.target.value)} value={password} />
+                </Form.Item>
 
-                        </form>
-
-                        <p>
-                            Already have an account?{' '}
-                            <NavLink to="/log-in" >
-                                Sign in
-                            </NavLink>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </main>
+                <Button
+                    className='btn-submit'
+                    type="primary"
+                    size='large'
+                    onClick={onSubmit}>
+                    Sign up
+                </Button>
+                <Card className='sign-in'>
+                    Already have an account ?
+                    <br />
+                    <NavLink to="/log-in">Sign in</NavLink>
+                </Card>
+            </Form>
+        </div>
     )
 }
 
-export default Signup
+export default Signup;

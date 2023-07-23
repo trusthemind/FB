@@ -40,7 +40,7 @@ header {
 
     .antd-switch {
       width: 20px;
-      background-color: #ae1e1e;
+      background-color: #6a040f;
 
       &:hover {
         background-color: black;
@@ -55,7 +55,9 @@ header {
       }
 
     }
-
+      a{
+        color: #6a040f;
+      }
     p {
       margin: 0;
     }
@@ -69,6 +71,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: black;
 }
 
