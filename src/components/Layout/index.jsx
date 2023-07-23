@@ -1,10 +1,11 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { auth } from '../../firebase';
+import { auth, logOut } from '../../firebase';
 import { changeTheme } from "../services/action";
 import { connect } from "react-redux";
 import { Header, Footer } from "antd/es/layout/layout";
 import { Switch } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
 
 function Layout({ theme, changeTheme }) {
     const [currentUser, setcurrentUser] = useState(null);
@@ -45,6 +46,7 @@ function Layout({ theme, changeTheme }) {
                         onChange={toggleTheme}
                     />
                     {currentUser ? <p>Welcome, {user.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
+                    <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>
                 </div>
             </Header>
             <main>

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
+import { getAuth, signOut } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdYMOTuCU-fqniYCe6nrDeCRVebEEt1Vc",
@@ -15,3 +15,12 @@ const app = initializeApp(firebaseConfig);
 
 // AUTH 
 export const auth = getAuth(app)
+
+// LOG OUT
+export const logOut = async () => {
+  try {
+    auth.signOut();
+  } catch (error) {
+    console.log(error);
+  }
+}
