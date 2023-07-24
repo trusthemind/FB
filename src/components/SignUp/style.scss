@@ -1,0 +1,58 @@
+.background {
+    #sign-up {
+        width: 50%;
+        max-width: 400px;
+        height: 60%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+        border-radius: 40px 120px 40px 120px;
+
+        * {
+            font-size: 16px;
+        }
+
+        label::before {
+            color: #ef233c;
+        }
+
+        input:hover,
+        input:focus {
+            border-color: #d9d9d9 !important;
+            box-shadow: 0px 0px 2px 0.5px #6a040f;
+        }
+
+        .ant-input-affix-wrapper-focused,
+        .ant-input-affix-wrapper:focus,
+        .ant-input-affix-wrapper:hover {
+            box-shadow: 0px 0px 2px 0.5px #6a040f;
+            border-color: #d9d9d9 !important;
+        }
+
+        .ant-input-affix-wrapper:hover {
+            border-color: #d9d9d9 !important;
+        }
+
+        .ant-input-affix-wrapper:hover input {
+            box-shadow: none;
+        }
+
+        .ant-btn-primary {
+            background-color: #6a040f;
+            border: none;
+        }
+
+        .sign-in {
+            text-align: center;
+
+            a {
+                color: #ef233c;
+                text-decoration: underline;
+            }
+        }
+    }
+}

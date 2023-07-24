@@ -1,19 +1,13 @@
 import { createStore } from "redux";
 
 const initialState = {
-    width: 10,
-    height: 10,
-    blackHoleCount: 10,
+    theme: "light",
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        // case 'SET_WIDTH':
-        //     return { ...state, width: +action.payload };
-        // case 'SET_HEIGHT':
-        //     return { ...state, height: +action.payload };
-        // case 'SET_BLACK_HOLE_COUNT':
-        //     return { ...state, blackHoleCount: action.payload };
+        case 'CHANGE_THEME':
+            return { ...state, theme: action.payload };
         default:
             return state;
     }

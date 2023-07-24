@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { NavLink,useNavigate } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Form, Input, Button, Card } from 'antd';
+import "./style.scss"
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -25,29 +26,38 @@ const Login = () => {
     }
 
     return (
-    <>
-        <main >
-            <div>
-                <form>
-                    <div>
-                        <label htmlFor="email-address">Email address</label>
-                        <input id="email-address" name="email" type="email" required placeholder="Email address" onChange={(e) => setEmail(e.target.value)}/>
-                    </div>
+        <div className='background'>
+            <Form name='login-form'
+                autoComplete="on">
 
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input id="password" name="password" type="password" required placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-                    </div>
-                        <button onClick={onLogin}>Log</button>
-                </form>
+                <Form.Item label="E-mail"
+                    name="email"
+                    className='input'
+                    rules={[{ required: true, message: 'Please input correct your e-mail!' }]}>
+                    <Input onInput={(e) => setEmail(e.target.value)} value={email}/>
+                </Form.Item>
+                
+                <Form.Item label="Password"
+                    name="password"
+                    rules={[{ required: true, message: 'Please input correct your passsword!' }]}>
+                    <Input.Password onInput={(e) => setPassword(e.target.value)} value={password}/>
+                </Form.Item>
 
-                <p className="text-sm text-white text-center">
-                    No account yet? {' '}
-                </p>
-                <NavLink to="/">as</NavLink>
-            </div>
-        </main>
-    </>
+                <Form.Item>
+                    <Button type="primary" className='btn-submit' size='large' htmlType="submit" onClick={onLogin}>
+                        Submit
+                    </Button>
+                </Form.Item>
+
+                <Card className="no-acc">
+                    No account yet ?
+                    <br/>
+                    <NavLink to="/sign-up">Sign Up</NavLink>
+                </Card>
+               
+            </Form>
+
+        </div>
     )
 }
 

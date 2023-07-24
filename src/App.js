@@ -5,7 +5,7 @@ import Signup from './components/SignUp';
 import Home from "./components/Home"
 import Login from './components/LogIn';
 import Layout from './components/Layout';
-
+import "normalize-scss";
 
 function App() {
   
