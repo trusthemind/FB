@@ -1,55 +1,82 @@
+// Assuming emailRegex, passwordRegex, and nameRegex are correctly defined in '../services/RegEx'
+
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Form, Button, Input, Card } from 'antd';
-import "../LogIn/style.scss"
-import "./style.scss"
+import { emailRegex, passwordRegex } from '../services/RegEx';
+import "../LogIn/style.scss";
+import "./style.scss";
+
 
 const Signup = () => {
     const navigate = useNavigate();
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const onSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        await createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
-                navigate("/")
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
-    }
+        if (!emailRegex.test(email) && !passwordRegex.test(password)) {
+            return;
+          }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/");
+        } catch (error) {
+            console.log(error.code);
+        }
+    };
 
     return (
         <div className='background'>
-            <Form name='sign-up'
-                autoComplete="on">
+            <Form name='sign-up' autoComplete="on">
                 <Form.Item
                     label="Name"
                     name="name"
-                    rules={[{ required: true, message: "Please input your name" }]}>
+                    rules={[
+                        { required: false, message: 'Please input your name' },
+                        {
+                            pattern: /^[A-Za-z]{2,}(?:\s[A-Za-z]+)*$/,
+                            message: 'Please input correct name!',
+                        },
+                    ]}
+                >
                     <Input onInput={(e) => setName(e.target.value)} value={name} />
                 </Form.Item>
 
-                <Form.Item label="E-mail"
+                <Form.Item
+                    label="E-mail"
                     name="email"
                     className='input'
-                    rules={[{ required: true, message: 'Please input correct your e-mail!' }]}>
+                    rules={[
+                        { required: true, message: 'Please input your e-mail!' },
+                        {
+                            pattern: emailRegex,
+                            message: 'Please input correct your e-mail!',
+                        },
+                    ]}
+                >
                     <Input onInput={(e) => setEmail(e.target.value)} value={email} />
                 </Form.Item>
 
-                <Form.Item label="Password"
+                <Form.Item
+                    label="Password"
                     name="password"
-                    rules={[{ required: true, message: 'Please input correct your passsword!' }]}>
+                    rules={[
+                        { required: true, message: 'Please input your password!' },
+                        {
+                            pattern: passwordRegex,
+                            message: 'Password must contain at least 8 characters, one uppercase letter!',
+                        },
+                    ]}
+                >
                     <Input.Password onInput={(e) => setPassword(e.target.value)} value={password} />
                 </Form.Item>
 
@@ -57,7 +84,8 @@ const Signup = () => {
                     className='btn-submit'
                     type="primary"
                     size='large'
-                    onClick={onSubmit}>
+                    onClick={onSubmit}
+                >
                     Sign up
                 </Button>
                 <Card className='sign-in'>
@@ -67,7 +95,7 @@ const Signup = () => {
                 </Card>
             </Form>
         </div>
-    )
-}
+    );
+};
 
 export default Signup;

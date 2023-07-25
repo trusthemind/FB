@@ -19,12 +19,15 @@ html {
   height: 100%;
 }
 
+#root{display: flex;
+flex-direction: column;}
+
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px !important;
+  height: 7.5% !important;
   background-color: white !important;
   
 
@@ -66,9 +69,8 @@ header {
 }
 
 main {
-  width: 100%;
-  height: auto;
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -76,6 +78,7 @@ main {
 }
 
 footer {
+  height: 10.5%;
   display: flex;
   flex-direction: row;
   justify-content: center;
