@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Form, Button, Input, Card } from 'antd';
 import { emailRegex, passwordRegex } from '../services/RegEx';
@@ -25,9 +25,9 @@ const Signup = () => {
           }
 
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth,email, password);
             const user = userCredential.user;
-            console.log(user);
+            await updateProfile(user, {displayName: name});
             navigate("/");
         } catch (error) {
             console.log(error.code);
