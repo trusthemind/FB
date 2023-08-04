@@ -21,7 +21,7 @@ function Layout({ theme, changeTheme }) {
         return () => {
             unsubscribe();
         };
-    }, []);
+    }, [changeTheme]);
 
     const toggleTheme = () => {
         const tempTheme = !themeState ? "dark" : "light";
@@ -29,7 +29,6 @@ function Layout({ theme, changeTheme }) {
         changeTheme(tempTheme);
         window.localStorage.setItem("theme", tempTheme);
     }
-
 
     return (
         <>
@@ -45,7 +44,8 @@ function Layout({ theme, changeTheme }) {
                         checked={theme === "dark"}
                         onChange={toggleTheme}
                     />
-                    {currentUser ? <p>Welcome, {user.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
+                    
+                    {currentUser ? <p>Welcome, {user.displayName ? user.displayName : user.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
                     <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>
                 </div>
             </Header>
