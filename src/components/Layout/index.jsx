@@ -21,7 +21,7 @@ function Layout({ theme, changeTheme }) {
         return () => {
             unsubscribe();
         };
-    }, []);
+    }, [changeTheme]);
 
     const toggleTheme = () => {
         const tempTheme = !themeState ? "dark" : "light";

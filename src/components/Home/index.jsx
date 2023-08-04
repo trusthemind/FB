@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Carousel } from 'antd';
-import Map from '../Map';
+import TomMap from '../Map';
 import "./style.scss"
 
 const Home = () => {
@@ -31,7 +31,7 @@ const Home = () => {
                         <div></div>
                     </Carousel>
                 </Card>
-                <Map/>
+                <TomMap/>
             </Card>
         </>
     );
