@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Carousel } from 'antd';
+import Carousel from './Carousel';
+import { Card } from 'antd';
 import TomMap from '../Map';
 import "./style.scss"
 
@@ -19,19 +20,9 @@ const Home = () => {
                         Etched forever on your skin. We are not just a studio.
                         <br />We are a sanctuary for self-expression, a place where creativity and passion converge to craft masterpieces in <b>ink</b>.
                     </p>
-                    {/*  */}
                 </Card>
-                <Card>
-                    <Carousel autoplay
-                        className='carousel'
-                        dotPosition='left'>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </Carousel>
-                </Card>
-                <TomMap/>
+                <Card className='carousel-card'><Carousel /></Card>
+                <Card><TomMap /></Card>
             </Card>
         </>
     );
