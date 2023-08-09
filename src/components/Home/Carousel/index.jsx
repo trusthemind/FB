@@ -1,0 +1,28 @@
+import { Carousel as Swipper } from "antd";
+import athena from "./img/athena.webp"
+import hecate from "./img/hecate.webp"
+import medusa from "./img/medusa.webp"
+import zeabf from "./img/zeabf.webp"
+import japan_dragon from "./img/japan-dragon.webp"
+import japanOni from "./img/japanoni.webp"
+import "../style.scss"
+
+function Carousel() {
+    return (
+        <>
+        <p>Our Work</p>
+        <Swipper autoplay
+        className='carousel'
+        dotPosition='bottom'>
+        <img src={athena} alt="Tatto" />
+        <img src={hecate} alt="Tatto" />
+        <img src={japan_dragon} alt="Tatto" />
+        <img src={japanOni} alt="Tatto" />
+        <img src={zeabf} alt="Tatto" />
+        <img src={medusa} alt="Tatto" />
+        </Swipper>
+        </>
+    );
+}
+
+export default Carousel;
