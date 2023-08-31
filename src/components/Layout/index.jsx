@@ -45,7 +45,8 @@ function Layout({ theme, changeTheme }) {
                         onChange={toggleTheme}
                     />
                     
-                    {currentUser ? <p>Welcome, {user.displayName ? user.displayName : user.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
+                    {currentUser ? <p>Welcome, {user.displayName ?
+                    user.displayName : user.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
                     <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>
                 </div>
             </Header>
