@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const ideaApi = createApi({
-  reducerPath: 'tattoIdea',
+  reducerPath: 'GET_IDEAS_REDUCER',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://mijntattoo.nl/api/' }),
   endpoints: (builder) => ({
     getTattoIdeaAll: builder.query({
@@ -11,5 +11,8 @@ export const ideaApi = createApi({
 })
 
 
-export const {useGetTattoIdeaAllQuery} = ideaApi;
+export const {
+  useGetTattoIdeaAllQuery,
+  useLazyGetTattoIdeaAllQuery
+} = ideaApi;
 

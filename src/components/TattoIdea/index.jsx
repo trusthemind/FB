@@ -1,24 +1,33 @@
-/* eslint-disable no-undef */
 import { useState, useEffect } from "react";
-import { useGetTattoIdeaAllQuery } from "../services/tattoidea.api";
-import { getTattoIdeas } from "../services/action";
+import { useLazyGetTattoIdeaAllQuery } from "../services/tattoidea.api";
+import { setTattoIdeastoState } from "../services/action";
 import { connect } from "react-redux";
 import { Button } from "antd";
 
 
-function IdeaGenerator({ getTattoIdeas, tattoideas }) {
-    const [tattos, setTattoideas] = useState([])
+function IdeaGenerator({ setTattoIdeastoState, tattoideas }) {
+    let [trigger, { data, isLoading }] = useLazyGetTattoIdeaAllQuery();
 
-    let {data, isloading} = useGetTattoIdeaAllQuery();
+
+    useEffect(() => {
+        setTattoIdeastoState(data)
+    }, [data])
+
+
+    useEffect(() => {
+        console.log(isLoading)
+    }, [data])
+
+    
 
     const getIdeasHandler = () => {
-
-        getTattoIdeas("")
+        trigger();
 
     }
     return (
         <>
             <Button onClick={getIdeasHandler}>generate</Button>
+            {isLoading && <h1>loading</h1>}
         </>
     )
 }
@@ -31,9 +40,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-        getTattoIdeas: (val) => dispatch(getTattoIdeas(val))
+        setTattoIdeastoState: (val) => dispatch(setTattoIdeastoState(val))
     };
 };
-
 
 export default connect(mapState, mapDispatch)(IdeaGenerator);

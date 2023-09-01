@@ -1,7 +1,6 @@
-import { createStore } from "@reduxjs/toolkit";
-import { createAsyncThunkMiddleware } from "@reduxjs/toolkit";
-import { applyMiddleware } from "@reduxjs/toolkit";
-import { ideaApi } from "./components/services/tattoidea.api";
+import { configureStore } from "@reduxjs/toolkit"
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { ideaApi } from "./components/services/tattoidea.api"
 
 const initialState = {
     theme: "light",
@@ -20,6 +19,15 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-const store = createStore(reducer, applyMiddleware(createAsyncThunkMiddleware(ideaApi.reducerPath)));
+const store = configureStore({
+    reducer: {
+        reducer,
+        [ideaApi.reducerPath]: ideaApi.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(ideaApi.middleware),
+})
+
+setupListeners(store.dispatch)
 
 export default store;

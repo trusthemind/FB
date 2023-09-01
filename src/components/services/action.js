@@ -4,7 +4,7 @@ export const changeTheme = (data) => {
         payload: data,
     }
 }
-export const getTattoIdeas = (data) =>{
+export const setTattoIdeastoState = (data) => {
     return {
         type: "GET_TATTO_IDEAS",
         payload: data,
