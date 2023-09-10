@@ -1,7 +1,10 @@
+import Card from "antd/es/card/Card";
 function Error() {
-    return ( 
-        <h1>Error</h1>
-     );
+    return (
+        <Card>
+            <h1>Error</h1>
+        </Card>
+    );
 }
 
 export default Error;

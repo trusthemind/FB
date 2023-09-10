@@ -5,6 +5,7 @@ import Signup from './components/SignUp';
 import Home from "./components/Home"
 import Login from './components/LogIn';
 import Layout from './components/Layout';
+import Testimonials from './pages/Testimonials';
 import "normalize-scss";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path='sign-up' element={<Signup />} />
+        <Route path='testimonials' element={<Testimonials />} />
         <Route path='log-in' element={<Login />} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />

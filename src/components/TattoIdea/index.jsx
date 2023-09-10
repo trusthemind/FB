@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { useLazyGetTattoIdeaAllQuery } from "../services/tattoidea.api";
 import { setTattoIdeastoState } from "../services/action";
 import { connect } from "react-redux";
-import { Button, Image } from "antd";
-import { Card } from "antd";
+import { Button, Image, Card } from "antd";
 
 export function MapCard({ array }) {
     return (
