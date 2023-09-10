@@ -5,9 +5,9 @@ import TestimonialsComponent from "../../components/Testimonials";
 function Testimonials() {
     return (
         <>
-        <h1 style={{color:'white'}}>yesss</h1>
-        <AddTestimonial/>
-        <TestimonialsComponent/>
+            <h1 style={{ color: 'white' }}>yesss</h1>
+            <AddTestimonial />
+            <TestimonialsComponent />
         </>
     );
 }

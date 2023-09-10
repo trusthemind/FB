@@ -54,8 +54,14 @@ function Layout({ theme, changeTheme }) {
                 <Outlet></Outlet>
             </main>
             <Footer>
-                footer
-                <NavLink to={"sign-up"}>sign in</NavLink>
+                <p>
+                    Copyright © <span>{new Date().getFullYear()}</span>
+                    <br />
+                    <span>Fedir Melnyk</span>
+                </p>
+                <NavLink to={"/"}>
+                    <img src={process.env.PUBLIC_URL + "img/icon.png"} alt="Logo" />
+                </NavLink>
             </Footer>
         </>
     );
