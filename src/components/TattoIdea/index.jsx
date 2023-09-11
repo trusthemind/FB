@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "./style.scss"
 import { useEffect } from "react";
-import { useLazyGetTattoIdeaAllQuery } from "../services/tattoidea.api";
+import { useLazyGetTattoIdeaAllQuery } from "../../services/tattoidea.api";
 import { setTattoIdeastoState } from "../services/action";
 import { connect } from "react-redux";
 import { Button, Image, Card } from "antd";

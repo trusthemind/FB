@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { ideaApi } from "./components/services/tattoidea.api"
+import { ideaApi } from "./services/tattoidea.api"
 
 const initialState = {
     theme: "light",

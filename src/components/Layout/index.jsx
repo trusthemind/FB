@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { auth, logOut } from '../../firebase';
-import { changeTheme } from "../services/action";
+import { changeTheme } from "../../services/action";
 import { connect } from "react-redux";
 import { Header, Footer } from "antd/es/layout/layout";
 import { Switch } from "antd";
@@ -54,8 +54,14 @@ function Layout({ theme, changeTheme }) {
                 <Outlet></Outlet>
             </main>
             <Footer>
-                footer
-                <NavLink to={"sign-up"}>sign in</NavLink>
+                <p>
+                    Copyright © <span>{new Date().getFullYear()}</span>
+                    <br />
+                    <span>Fedir Melnyk</span>
+                </p>
+                <NavLink to={"/"}>
+                    <img src={process.env.PUBLIC_URL + "img/icon.png"} alt="Logo" />
+                </NavLink>
             </Footer>
         </>
     );

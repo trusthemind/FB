@@ -5,8 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Form, Button, Input, Card } from 'antd';
-import { emailRegex, passwordRegex } from '../services/RegEx';
-import "../LogIn/style.scss";
+import { emailRegex, passwordRegex } from '../../services/RegEx';
 import "./style.scss";
 
 
@@ -22,12 +21,12 @@ const Signup = () => {
 
         if (!emailRegex.test(email) && !passwordRegex.test(password)) {
             return;
-          }
+        }
 
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth,email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            await updateProfile(user, {displayName: name});
+            await updateProfile(user, { displayName: name });
             navigate("/");
         } catch (error) {
             console.log(error.code);

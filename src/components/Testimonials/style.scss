@@ -1,0 +1,20 @@
+.add-card {
+    height: auto;
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            align-self: flex-end;
+        }
+    }
+}
