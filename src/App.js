@@ -9,8 +9,6 @@ import Testimonials from './pages/Testimonials';
 import "normalize-scss";
 
 function App() {
-
-
   return (
     <>
       <Routes>
