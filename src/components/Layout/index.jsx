@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { auth, logOut } from '../../firebase';
-import { changeTheme } from "../services/action";
+import { changeTheme } from "../../services/action";
 import { connect } from "react-redux";
 import { Header, Footer } from "antd/es/layout/layout";
 import { Switch } from "antd";

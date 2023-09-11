@@ -29,8 +29,13 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 7.5% !important;
+  width: 100%;
   background-color: white !important;
+  border-bottom: 1px solid black;
 
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
   img {
     height: 50px;

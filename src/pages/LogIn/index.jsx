@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Card } from 'antd';
-import { emailRegex, passwordRegex } from '../services/RegEx';
+import { emailRegex, passwordRegex } from '../../services/RegEx';
 import "./style.scss";
 
 const Login = () => {
