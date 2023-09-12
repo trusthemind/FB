@@ -7,7 +7,6 @@ const { TextArea } = Input;
 function AddTestimonial() {
     const [comment, setComment] = useState(null)
 
-
     return (
         <Card className="add-card">
             <h1>Addd</h1>

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app"
-import { getDatabase, ref, set } from "firebase/database"
+import { getDatabase, ref, set, get } from "firebase/database"
 import { getAuth } from "firebase/auth"
+import { async } from "q";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdYMOTuCU-fqniYCe6nrDeCRVebEEt1Vc",
@@ -30,9 +31,17 @@ export const logOut = async () => {
   }
 }
 
-export const sendMessage = (username, textvalue) => {
-  // TODO have to fix a send messages
-  set(ref(database, 'messages/ + 2'), {
+export const countMessages = async () => {
+  const messagesRef = ref(database, "messages");
+  const count = await get(messagesRef).then((snapshot) => {
+    return snapshot.size;
+  });
+  return count;
+};
+
+export const sendMessage = async (username, textvalue) => {
+  let temp = await countMessages() + 1;
+  set(ref(database, `messages/ + ${temp}`), {
     username: username,
     value: textvalue,
   });
