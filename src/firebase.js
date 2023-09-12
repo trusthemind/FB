@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { getDatabase, ref, set } from "firebase/database"
+import { getDatabase, ref, set, get, child } from "firebase/database"
 import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
@@ -28,6 +28,20 @@ export const logOut = async () => {
   } catch (error) {
     console.log(error);
   }
+}
+
+export const countMessages = () => {
+  get(child(ref(getDatabase), 'messages'))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+
 }
 
 export const sendMessage = (username, textvalue) => {

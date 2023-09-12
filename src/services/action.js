@@ -10,3 +10,11 @@ export const setTattoIdeastoState = (data) => {
         payload: data,
     }
 }
+
+export const setUsertoState = (data) => {
+    return {
+        type: "GET_USER",
+        payload: data,
+    }
+}
+

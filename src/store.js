@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { ideaApi } from "./services/tattoidea.api"
 
 const initialState = {
+    user: {},
     theme: "light",
     tattoideas: [],
 };
@@ -14,6 +15,8 @@ const reducer = (state = initialState, action) => {
             return { ...state, theme: action.payload };
         case 'GET_TATTO_IDEAS':
             return { ...state, tattoideas: action.payload };
+        case 'GET_USER':
+            return { ...state, user: action.payload };
         default:
             return state;
     }

@@ -1,27 +1,31 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { auth, logOut } from '../../firebase';
-import { changeTheme } from "../../services/action";
+import { changeTheme, setUsertoState } from "../../services/action";
 import { connect } from "react-redux";
 import { Header, Footer } from "antd/es/layout/layout";
 import { Switch } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 
-function Layout({ theme, changeTheme }) {
+function Layout({ theme, changeTheme, setUsertoState, user }) {
     const [currentUser, setcurrentUser] = useState(null);
     const [themeState, setthemeState] = useState("light");
-    const user = auth.currentUser;
+    const currUser = auth.currentUser;
+
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setcurrentUser(currentUser);
         });
-        setthemeState(changeTheme(window.localStorage.getItem("theme")));
-
         return () => {
             unsubscribe();
-        };
+        }
+    }, [])
+    //SET-THEME
+    useEffect(() => {
+        setthemeState(changeTheme(window.localStorage.getItem("theme")));
     }, [changeTheme]);
+
 
     const toggleTheme = () => {
         const tempTheme = !themeState ? "dark" : "light";
@@ -45,9 +49,9 @@ function Layout({ theme, changeTheme }) {
                         onChange={toggleTheme}
                     />
 
-                    {currentUser ? <p>Welcome, {user.displayName ?
-                        user.displayName : user.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
-                    {user && <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>}
+                    {currentUser ? <p>Welcome, {currUser.displayName ?
+                        currUser.displayName : currUser.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
+                    {currUser && <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>}
                 </div>
             </Header>
             <main>
@@ -69,13 +73,15 @@ function Layout({ theme, changeTheme }) {
 
 const mapState = (state) => {
     return {
+        user: state.user,
         theme: state.theme
     };
 };
 
 const mapDispatch = (dispatch) => {
     return {
-        changeTheme: (val) => dispatch(changeTheme(val))
+        changeTheme: (val) => dispatch(changeTheme(val)),
+        setUsertoState: (val) => dispatch(setUsertoState(val))
     };
 };
 
