@@ -29,6 +29,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 7.5% !important;
+  min-height: 70px;
   width: 100%;
   background-color: white !important;
   border-bottom: 1px solid black;
@@ -88,6 +89,7 @@ main {
 
 footer {
   height: 10.5%;
+  min-height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
