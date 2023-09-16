@@ -1,11 +1,20 @@
+import React, { useEffect, useState } from "react";
 import { Card } from "antd";
-import { database } from "../../firebase";
+import { getMessages } from "../../firebase";
 
 function TestimonialsComponent() {
-    console.log(database)
+    const [messageArray, setMessageArray] = useState([])
+
+    useEffect(() => {
+        const fetchMessages = async () => {
+            const messages = await getMessages();
+            return setMessageArray(messages);
+        }
+        fetchMessages()
+    }, [])
     return (
         <Card>
-            "Allget"
+            {messageArray.map((item, index) => <p key={index}>{item.value}</p>)}
         </Card>
     );
 }
