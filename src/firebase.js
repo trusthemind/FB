@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getDatabase, ref, set, get } from "firebase/database"
 import { getAuth } from "firebase/auth"
-import { async } from "q";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdYMOTuCU-fqniYCe6nrDeCRVebEEt1Vc",
@@ -33,25 +32,43 @@ export const logOut = async () => {
 
 export const countMessages = async () => {
   const messagesRef = ref(database, "messages");
-  const count = await get(messagesRef).then((snapshot) => {
-    return snapshot.size;
-  });
+  let count;
+  try {
+    const snapshot = await get(messagesRef);
+    count = snapshot.size;
+  } catch (error) {
+    console.log(error.message);
+    count = 0;
+  }
   return count;
 };
 
 export const getMessages = async () => {
   const messagesRef = ref(database, "messages");
-  const count = await get(messagesRef).then((snapshot) => {
-    if (snapshot.exists())
-    return snapshot.val();
-  });
-  return count
+  let count;
+  try {
+    const snapshot = await get(messagesRef);
+    if (snapshot.exists()) {
+      count = snapshot.val();
+      // console.log(count);
+    } else {
+      count = [];
+    }
+  } catch (error) {
+    console.log(error.message);
+    count = [];
+  }
+  return count;
 };
 
 export const sendMessage = async (username, textvalue) => {
   let temp = await countMessages() + 1;
-  set(ref(database, `messages/${temp}`), {
-    username: username,
-    value: textvalue,
-  });
-}
+  try {
+    set(ref(database, `messages/${temp}`), {
+      username: username,
+      value: textvalue,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
