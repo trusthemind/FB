@@ -39,9 +39,18 @@ export const countMessages = async () => {
   return count;
 };
 
+export const getMessages = async () => {
+  const messagesRef = ref(database, "messages");
+  const count = await get(messagesRef).then((snapshot) => {
+    if (snapshot.exists())
+    return snapshot.val();
+  });
+  return count
+};
+
 export const sendMessage = async (username, textvalue) => {
   let temp = await countMessages() + 1;
-  set(ref(database, `messages/ + ${temp}`), {
+  set(ref(database, `messages/${temp}`), {
     username: username,
     value: textvalue,
   });

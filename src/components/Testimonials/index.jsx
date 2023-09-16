@@ -1,8 +1,8 @@
 import { Card } from "antd";
-import { database } from "../../firebase";
+import { getMessages } from "../../firebase";
 
 function TestimonialsComponent() {
-    console.log(database)
+    console.log(getMessages())
     return (
         <Card>
             "Allget"
