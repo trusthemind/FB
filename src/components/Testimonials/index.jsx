@@ -14,7 +14,7 @@ function TestimonialsComponent() {
     }, [])
     return (
         <Card>
-            {messageArray.map((item, index) => <p key={index}>{item.value}</p>)}
+            {messageArray.map((item, index) => <p key={index}>{item.username}{item.value}</p>)}
         </Card>
     );
 }

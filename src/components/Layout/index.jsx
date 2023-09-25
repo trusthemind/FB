@@ -21,11 +21,16 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
             unsubscribe();
         }
     }, [])
+    
+    useEffect(() => {
+        setUsertoState({name:currentUser?.displayName,email:currentUser?.email})
+    }, [currentUser]) // eslint-disable-line react-hooks/exhaustive-deps
+    // console.log(user);
     //SET-THEME
     useEffect(() => {
         setthemeState(changeTheme(window.localStorage.getItem("theme")));
     }, [changeTheme]);
-
+    
 
     const toggleTheme = () => {
         const tempTheme = !themeState ? "dark" : "light";
@@ -73,8 +78,8 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
 
 const mapState = (state) => {
     return {
-        user: state.user,
-        theme: state.theme
+        user: state.reducer.user,
+        theme: state.reducer.theme
     };
 };
 

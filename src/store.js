@@ -4,7 +4,7 @@ import { ideaApi } from "./services/tattoidea.api"
 
 const initialState = {
     user: {},
-    theme: "light",
+    theme: 'light',
     tattoideas: [],
 };
 
