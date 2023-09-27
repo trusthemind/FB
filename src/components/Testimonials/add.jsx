@@ -10,7 +10,7 @@ function AddTestimonial(user) {
 
     useEffect(() => {
         setComment({...comment,user: user.user.name})
-    }, [ user])// eslint-disable-line react-hooks/exhaustive-deps
+    }, [ user ])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <Card className="add-card">
