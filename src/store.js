@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { ideaApi } from "./services/tattoidea.api"
+import { artistsApi } from "./services/artists.api";
 
 const initialState = {
     user: {},
     theme: 'light',
     tattoideas: [],
+    artirst: []
 };
 
 
@@ -26,9 +28,11 @@ const store = configureStore({
     reducer: {
         reducer,
         [ideaApi.reducerPath]: ideaApi.reducer,
+        [artistsApi.reducerPath]: artistsApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(ideaApi.middleware),
+        getDefaultMiddleware().concat(ideaApi.middleware, artistsApi.middleware),
+    // getDefaultMiddleware().concat(artistsApi.middleware)
 })
 
 setupListeners(store.dispatch)
