@@ -24,7 +24,7 @@ function IdeaGenerator({ setTattoIdeastoState, tattoideas }) {
 
     useEffect(() => {
         setTattoIdeastoState(data)
-    }, [data])
+    }, [data]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const getIdeasHandler = () => {
         trigger();

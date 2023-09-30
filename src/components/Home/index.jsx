@@ -4,6 +4,8 @@ import { Card } from 'antd';
 import TomMap from '../Map';
 import "./style.scss"
 import IdeaGenerator from '../TattoIdea';
+import TestimonialsComponent from '../Testimonials';
+import TeamComponent from '../../pages/Team';
 
 const Home = () => {
 
@@ -23,8 +25,10 @@ const Home = () => {
                     </p>
                 </Card>
                 <Card className='carousel-card'><Carousel /></Card>
-                <Card><TomMap /></Card>
+                <TomMap />
                 <IdeaGenerator/>
+                <TestimonialsComponent/>
+                <TeamComponent/>
             </Card>
         </>
     );

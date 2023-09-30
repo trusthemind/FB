@@ -18,3 +18,59 @@
         }
     }
 }
+
+.message-card {
+    width: 100%;
+    height: auto;
+    transition: all 0.2s;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+
+    .circle {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(1.5px);
+        border-radius: 50%;
+        position: absolute;
+        animation: move-up6 2s ease-in infinite alternate-reverse;
+        top: -10px;
+        left: -25px;
+    }
+
+    .messages-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .message-item {
+            height: 100px;
+            width: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+    }
+
+}
+
+@keyframes move-up6 {
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes move-down1 {
+    to {
+        transform: translateY(10px);
+    }
+}
