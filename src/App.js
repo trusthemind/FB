@@ -7,6 +7,7 @@ import Login from './pages/LogIn';
 import Layout from './components/Layout';
 import Testimonials from './pages/Testimonials';
 import "normalize-scss";
+import Team from './pages/Team';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='sign-up' element={<Signup />} />
+          <Route path='team' element={<Team />} />
           <Route path='testimonials' element={<Testimonials />} />
           <Route path='log-in' element={<Login />} />
           <Route path='*' element={<Error />} />
