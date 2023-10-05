@@ -3,8 +3,8 @@ import { useGetAllArtistsQuery } from "../../services/artists.api";
 import { connect } from "react-redux";
 import { setArtisttoState } from "../../services/action"
 import { Card, Image } from "antd";
-import "./style.scss"
 import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
+import "./style.scss"
 
 function TeamComponent({ setArtisttoState }) {
     const { data, isLoading } = useGetAllArtistsQuery();
@@ -29,12 +29,17 @@ function TeamComponent({ setArtisttoState }) {
                                     : <></>
                                 }
                                 <h2 className="item-name">{item.name}
-                                        {item.facebook ? <a href={item.facebook}><FacebookOutlined /></a> : <></>}
-                                        {item.instagram ? <a href={item.instagram}><InstagramOutlined /></a> : <></>}
+                                    {item.facebook ? <a href={item.facebook}><FacebookOutlined /></a> : <></>}
+                                    {item.instagram ? <a href={item.instagram}><InstagramOutlined /></a> : <></>}
                                 </h2>
                                 {item.subtitle ? <h3 className="item-subtitle">{item.subtitle}</h3> : <></>}
                                 <p className="item-city">{item.city}</p>
                                 {item.bio ? <p className="bio">{item.bio}</p> : <></>}
+                                {item.tags ? <div className="tags">
+                                    {item.tags.map((tag, index) =>
+                                        <span className="tag" key={index}>#{tag.name}</span>
+                                    )}
+                                </div> : <></>}
                             </Card>
                         </div>
                     )}
