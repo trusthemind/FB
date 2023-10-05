@@ -7,11 +7,24 @@
     width: 75%;
     max-height: 100%;
 }
+
 //todo fix grid 
 .artist-grid div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+}
+
+@media (max-width: 1800px) {
+    .artist-grid div {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 1350px) {
+    .artist-grid div {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 }
 
 .artist-item-card {
