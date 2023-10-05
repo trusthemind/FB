@@ -7,7 +7,7 @@ const initialState = {
     user: {},
     theme: 'light',
     tattoideas: [],
-    artirst: []
+    artists: []
 };
 
 
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
         case 'GET_TATTO_IDEAS':
             return { ...state, tattoideas: action.payload };
         case 'GET_ARTIST':
-            return { ...state, artirst: action.payload };
+            return { ...state, artists: action.payload };
         case 'GET_USER':
             return { ...state, user: action.payload };
         default:
