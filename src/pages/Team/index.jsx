@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useGetAllArtistsQuery } from "../../services/artists.api";
 import { connect } from "react-redux";
 import { setArtisttoState } from "../../services/action"
-import { Card, Image } from "antd";
+import { Card, Image, Tooltip } from "antd";
 import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
 import "./style.scss"
 
@@ -33,11 +33,13 @@ function TeamComponent({ setArtisttoState }) {
                                     {item.instagram ? <a href={item.instagram}><InstagramOutlined /></a> : <></>}
                                 </h2>
                                 {item.subtitle ? <h3 className="item-subtitle">{item.subtitle}</h3> : <></>}
-                                <p className="item-city">{item.city}</p>
+                                <p className="item-city">
+                                    {item.address ? <Tooltip title={item.address}>{item.city}</Tooltip> : <>{item.city}</>}
+                                </p>
                                 {item.bio ? <p className="bio">{item.bio}</p> : <></>}
-                                {item.tags ? <div className="tags">
+                                {item.tags && item.tags.lenght === 0 ? <div className="tags">
                                     {item.tags.map((tag, index) =>
-                                        <span className="tag" key={index}>#{tag.name}</span>
+                                        <span className="tag-item" key={index}>#{tag.name}</span>
                                     )}
                                 </div> : <></>}
                             </Card>
