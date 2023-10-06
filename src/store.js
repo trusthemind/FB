@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { ideaApi } from "./services/tattoidea.api"
-import { artistsApi } from "./services/artists.api";
+import { ideaApi } from "./api/tattoidea.api";
+import { artistsApi } from "./api/artists.api";
 
 const initialState = {
     user: {},

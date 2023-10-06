@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { useGetAllArtistsQuery } from "../../services/artists.api";
+import { useGetAllArtistsQuery } from "../../api/artists.api";
 import { connect } from "react-redux";
 import { setArtisttoState } from "../../services/action"
+import { artistsURL } from "../../services/constantUrl";
 import { Card, Image, Tooltip } from "antd";
 import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
 import "./style.scss"
@@ -25,7 +26,7 @@ function TeamComponent({ setArtisttoState }) {
                             <Card className="artist-item-card">
                                 {item?.profilepicture ?
                                     <Image className="artist-item-image"
-                                        src={"https://mijntattoo.nl/images/artists/" + item?.profilepicture} preview={false} width={300} height={300} />
+                                        src={artistsURL + item?.profilepicture} preview={false} width={300} height={300} />
                                     : <></>
                                 }
                                 <h2 className="item-name">{item.name}
@@ -37,7 +38,7 @@ function TeamComponent({ setArtisttoState }) {
                                     {item.address ? <Tooltip title={item.address}>{item.city}</Tooltip> : <>{item.city}</>}
                                 </p>
                                 {item.bio ? <p className="bio">{item.bio}</p> : <></>}
-                                {item.tags && item.tags.lenght === 0 ? <div className="tags">
+                                {item.tags && item.tags.length > 0 ? <div className="tags">
                                     {item.tags.map((tag, index) =>
                                         <span className="tag-item" key={index}>#{tag.name}</span>
                                     )}
