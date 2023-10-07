@@ -3,16 +3,19 @@
 }
 
 .artist-grid {
-    background-color: rgba(57, 151, 120, 0.467);
-    width: 75%;
+    width: 100%;
     max-height: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 //todo fix grid 
-.artist-grid div {
+.artist-grid .ant-card-body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 15px 20px;
     justify-items: center;
 }
 
@@ -28,81 +31,86 @@
     }
 }
 
-.artist-item-card {
-    border: 1px solid black;
-    border-radius: 20px;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
+.item-container {
+    height: fit-content;
 
-    .ant-card-body {
-        height: auto;
-        width: 450px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .ant-image {
-            display: block;
-        }
-
-        .artist-item-image {
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-    }
-
-    .item-name {
-        margin-bottom: 0;
-
-        a {
-            margin-left: 5px;
-            color: black;
-        }
-    }
-
-    .item-subtitle {
-        margin: -20px 0 0 0;
-        font-size: 18px;
-        color: #333333;
-    }
-
-    .item-city {
-        margin: -20px 0 0 0;
-        color: #333333;
-    }
-
-    .bio {
-        min-height: 50px;
-        height: auto;
-        min-width: 200px;
-        width: auto;
-        text-align: center;
-        padding: 10px;
-        margin: 0;
-        background: rgba(255, 255, 255, 0.05);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-
-    }
-
-    .tags {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 2.5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    .artist-item-card {
+        border: 1px solid #ef233c;
         border-radius: 20px;
-        padding: 7.5px;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
 
-        .tag-item { 
-            padding: 5px;
+        .ant-card-body {
+            min-height: 650px;
+            height: auto;
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .ant-image {
+                display: block;
+            }
+
+            .artist-item-image {
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+        }
+
+        .item-name {
+            margin-bottom: 0;
+
+            a {
+                margin-left: 5px;
+                color: black;
+            }
+        }
+
+        .item-subtitle {
+            margin: -20px 0 0 0;
+            font-size: 18px;
+            color: #333333;
+        }
+
+        .item-city {
+            margin: -20px 0 0 0;
+            color: #333333;
+        }
+
+        .bio {
+            min-height: 50px;
+            height: auto;
+            min-width: 200px;
+            width: auto;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.25);
-            font-family: 'Roboto', sans-serif;
+
+        }
+
+        .tags {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 2.5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            padding: 7.5px;
+
+            .tag-item {
+                padding: 5px;
+                border-radius: 10px;
+                background-color: rgba(0, 0, 0, 0.25);
+                font-family: 'Roboto', sans-serif;
+            }
         }
     }
 }

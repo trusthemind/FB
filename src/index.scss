@@ -19,6 +19,19 @@ html {
   height: 100%;
 }
 
+//to do redo a container color 
+.container {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 20px 0 0;
+  gap: 20px;
+  background-color: whitesmoke;
+}
+
 .error-page {
   height: 75%;
   min-height: 600px;
@@ -83,6 +96,10 @@ header {
         font-weight: bold;
         text-transform: uppercase;
         text-decoration: underline;
+
+        &:hover {
+          color: #ef233c;
+        }
       }
     }
   }
@@ -112,7 +129,7 @@ header {
     }
 
     a {
-      color: #6a040f;
+      color: #ef233c;
     }
 
     p {

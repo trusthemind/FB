@@ -4,10 +4,10 @@ import TestimonialsComponent from "../../components/Testimonials";
 
 function Testimonials() {
     return (
-        <>
-            <AddTestimonial />
+        <div className="container">
             <TestimonialsComponent />
-        </>
+            <AddTestimonial />
+        </div>
     );
 }
 

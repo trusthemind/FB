@@ -16,7 +16,7 @@ function TeamComponent({ setArtisttoState }) {
 
     console.log(data);
     return (
-        <>
+        <div className="container">
             {isLoading ? (
                 <div style={{ "color": "white" }}>Loading...</div>
             ) : (
@@ -48,7 +48,7 @@ function TeamComponent({ setArtisttoState }) {
                     )}
                 </Card>
             )}
-        </>
+        </div>
     );
 }
 const mapState = (state) => {
