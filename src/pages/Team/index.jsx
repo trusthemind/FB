@@ -10,9 +10,7 @@ import "./style.scss"
 
 function TeamComponent({ setArtisttoState }) {
     const { data, isLoading } = useGetAllArtistsQuery();
-    // const isHomePage = location.pathname === "/";  
-    const isHomePage =useLocation;  
-    console.log({location});
+    const isHomePage = location.pathname === "/";  
 
     useEffect(() => {
         setArtisttoState(data)

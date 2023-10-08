@@ -14,7 +14,7 @@ const Home = () => {
         <>
             <PageEntry title={"Tatto Art Studio"} text={"designed and created by Felix Melnyk"} />
             <div className='container'>
-                <Card >adasd
+                <Card className='card-container'>
                     <div className='About'>
                         <h1>Welcome to Tattoo Art Studio - Where Creativity and Passion Fuse in Ink!</h1>
                         <p>

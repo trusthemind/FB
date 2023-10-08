@@ -1,13 +1,20 @@
 import React from "react";
 import AddTestimonial from "../../components/Testimonials/add";
 import TestimonialsComponent from "../../components/Testimonials";
+import PageEntry from "../../components/PageEntry";
+import Card from "antd/es/card/Card";
+import "./style.scss"
 
 function Testimonials() {
-    return (
+    return (<>
+        <PageEntry />
         <div className="container">
-            <TestimonialsComponent />
-            <AddTestimonial />
+            <Card className="testimonals-container">
+                <TestimonialsComponent />
+                <AddTestimonial />
+            </Card>
         </div>
+    </>
     );
 }
 
