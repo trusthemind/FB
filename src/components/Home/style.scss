@@ -9,9 +9,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0;
     width: 100%;
-    height: 75%;
+    padding: 0 0 50px 0;
+    height: 525px;
     background: url("../../../public/img/backheader.jpg") center 65% no-repeat;
     background-size: cover;
     font-family: 'Great Vibes', cursive;
@@ -45,6 +45,7 @@
         padding: 25px 0;
         line-break: auto;
         font-family: 'Montserrat', sans-serif;
+        color: #000;
 
         h1 {
             text-align: center;

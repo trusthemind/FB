@@ -24,7 +24,7 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
 
     useEffect(() => {
         setUsertoState({ name: currentUser?.displayName, email: currentUser?.email })
-    }, [currentUser]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [currentUser]) 
     // console.log(user);
     //SET-THEME
     useEffect(() => {
@@ -69,7 +69,6 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
                         checked={theme === "dark"}
                         onChange={toggleTheme}
                     />
-
                     {currentUser ? <p>Welcome, {currUser.displayName ?
                         currUser.displayName : currUser.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
                     {currUser && <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>}

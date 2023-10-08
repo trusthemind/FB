@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import "./style.scss"
 import { useEffect } from "react";
 import { useLazyGetTattoIdeaAllQuery } from "../../api/tattoidea.api";
@@ -12,6 +11,7 @@ export function MapCard({ array }) {
         <Card className="photoCard">
             {array?.slice(0, 21).map((item) =>
                 <Image
+                key={item.id}
                     className="card-item"
                     src={tattosURL + item?.url}
                 />
@@ -34,7 +34,7 @@ function IdeaGenerator({ setTattoIdeastoState, tattoideas }) {
     return (
         <>
             <Button onClick={getIdeasHandler}>generate Ideas</Button>
-            {isLoading ? <h1>Loading</h1> : <MapCard array={data} />}
+            {isLoading ? <h1>Loading</h1> : data && <MapCard array={data} />}
 
         </>
     )
