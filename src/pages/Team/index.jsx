@@ -1,4 +1,4 @@
-import React, { useEffect,useLocation } from "react";
+import React, { useEffect, useLocation } from "react";
 import { useGetAllArtistsQuery } from "../../api/artists.api";
 import { connect } from "react-redux";
 import { setArtisttoState } from "../../services/action"
@@ -10,15 +10,16 @@ import "./style.scss"
 
 function TeamComponent({ setArtisttoState }) {
     const { data, isLoading } = useGetAllArtistsQuery();
-    const isHomePage = location.pathname === "/";  
+    //ToDo is homepage hook 
+    const isHomePage = location.pathname === "/";
 
     useEffect(() => {
         setArtisttoState(data)
-    }, [data]) 
+    }, [data])
 
     return (
         <>
-        {!isHomePage && <PageEntry title={"Our team"}/>}
+            {!isHomePage && <PageEntry title={"Our team"}/>}
             <div className="container">
                 {isLoading ? (
                     <div style={{ "color": "white" }}>Loading...</div>
@@ -38,7 +39,7 @@ function TeamComponent({ setArtisttoState }) {
                                     </h2>
                                     {item.subtitle ? <h3 className="item-subtitle">{item.subtitle}</h3> : <></>}
                                     <p className="item-city">
-                                        {item.address ? <Tooltip title={item.address}>{item.city}</Tooltip> : <>{item.city}</>}
+                                        {item.address ? <Tooltip title={item.address} arrow={false} color={"#ef233c"}>{item.city}</Tooltip> : <>{item.city}</>}
                                     </p>
                                     {item.bio ? <p className="bio">{item.bio}</p> : <></>}
                                     {item.tags && item.tags.length > 0 ? <div className="tags">

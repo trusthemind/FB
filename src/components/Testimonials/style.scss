@@ -1,3 +1,12 @@
+.ant-message {
+
+    div {
+        span {
+            color: #333 !important;
+        }
+    }
+}
+
 .add-card {
     height: auto;
     width: 60%;
@@ -5,7 +14,7 @@
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 
-    div {
+    .ant-card-body {
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -14,9 +23,28 @@
             text-align: center;
         }
 
+        .ant-input {
+            height: 100px;
+            width: 100%;
+            border-radius: 2.5px;
+            padding: 5px;
+            transition: 2s ease-in-out;
+            box-shadow: none;
+
+            &:hover,
+            &:focus {
+                outline: 1px solid #ddd;
+                border: 1px solid #ddd !important;
+            }
+        }
+
         button {
+            width: 100px;
+            height: 45px;
             align-self: flex-end;
-            &:hover{
+
+            &:hover,
+            &:focus {
                 color: #ef233c !important;
                 border: 1px solid #ef233c !important;
             }
@@ -54,8 +82,11 @@
         gap: 10px;
 
         .message-item {
-            height: 100px;
-            width: 200px;
+            min-height: 100px;
+            max-height: 400px;
+            min-width: 200px;
+            width: auto;
+            max-width: 400px;
             color: #000;
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -64,10 +95,21 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            line-break: anywhere;
             margin: 20px 0;
-
+            padding: 25px;
+            
             &:hover {
                 box-shadow: 0 0 10px #ef233c;
+            }
+            h3{
+                font-size: 20px;
+                span{
+                    margin-left: 2.5px;
+                }
+            }
+            p{
+                font-size: 16px;
             }
         }
     }
