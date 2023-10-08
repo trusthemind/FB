@@ -1,5 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type"
-
 export const changeTheme = (data) => {
     return {
         type: "CHANGE_THEME",

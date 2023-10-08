@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Card } from "antd";
+import { Card, Tooltip } from "antd";
+import { QuestionCircleOutlined, VerifiedOutlined } from "@ant-design/icons";
 import { getMessages } from "../../firebase";
 import "./style.scss"
 
@@ -13,18 +14,25 @@ function TestimonialsComponent() {
     fetchMessages()
 
     return (
+        <>
         <Card className="message-card">
             <div className="circle"></div>
             <div className="messages-container">
-                {messageArray.map((item, index) => <>
+                {messageArray.map((item, index) =>
                     <div className="message-item" key={index}>
-                        <h3>from #{item.username}</h3>
+                        <h3>from #{item.username}
+                            <Tooltip title={item.username.toLowerCase() === "anonymous" ?
+                                "This message send by anonymly person" : "This message send by user"}
+                                color={"#ef233c"} arrow={false}>
+                                <span>{item.username.toLowerCase() === "anonymous" ? <QuestionCircleOutlined /> : <VerifiedOutlined />}</span>
+                            </Tooltip>
+                        </h3>
                         <p>message: {item.value}</p>
                     </div>
-                </>
                 )}
             </div>
         </Card>
+        </>
     );
 }
 

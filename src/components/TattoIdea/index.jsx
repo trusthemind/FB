@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/alt-text */
 import "./style.scss"
 import { useEffect } from "react";
-import { useLazyGetTattoIdeaAllQuery } from "../../services/tattoidea.api";
+import { useLazyGetTattoIdeaAllQuery } from "../../api/tattoidea.api";
 import { setTattoIdeastoState } from "../../services/action";
 import { connect } from "react-redux";
+import { tattosURL } from "../../services/constantUrl";
 import { Button, Image, Card } from "antd";
 
 export function MapCard({ array }) {
@@ -11,8 +11,9 @@ export function MapCard({ array }) {
         <Card className="photoCard">
             {array?.slice(0, 21).map((item) =>
                 <Image
+                key={item.id}
                     className="card-item"
-                    src={"https://mijntattoo.nl/media/cache/upload_thumbnail" + item?.url}
+                    src={tattosURL + item?.url}
                 />
             )}
         </Card>
@@ -33,7 +34,7 @@ function IdeaGenerator({ setTattoIdeastoState, tattoideas }) {
     return (
         <>
             <Button onClick={getIdeasHandler}>generate Ideas</Button>
-            {isLoading ? <h1>Loading</h1> : <MapCard array={data} />}
+            {isLoading ? <h1>Loading</h1> : data && <MapCard array={data} />}
 
         </>
     )

@@ -21,16 +21,16 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
             unsubscribe();
         }
     }, [])
-    
+
     useEffect(() => {
-        setUsertoState({name:currentUser?.displayName,email:currentUser?.email})
-    }, [currentUser]) // eslint-disable-line react-hooks/exhaustive-deps
+        setUsertoState({ name: currentUser?.displayName, email: currentUser?.email })
+    }, [currentUser]) 
     // console.log(user);
     //SET-THEME
     useEffect(() => {
         setthemeState(changeTheme(window.localStorage.getItem("theme")));
     }, [changeTheme]);
-    
+
 
     const toggleTheme = () => {
         const tempTheme = !themeState ? "dark" : "light";
@@ -42,10 +42,26 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
     return (
         <>
             <Header>
+                <div className="entry-block">
                 {/* style={{ filter: "invert(100%)" }} */}
                 <NavLink to={"/"}>
                     <img src={process.env.PUBLIC_URL + "img/icon.png"} alt="Logo" />
                 </NavLink>
+                <nav>
+                    <ul>
+                        <li>
+                            <NavLink to={"/testimonials"}>
+                                <h2 className="header-nav-link">testimonials</h2>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={"/team"}>
+                                <h2 className="header-nav-link">team</h2>
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+                </div>
                 <div className="user-switch">
                     <Switch
                         className="antd-switch"
@@ -53,7 +69,6 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
                         checked={theme === "dark"}
                         onChange={toggleTheme}
                     />
-
                     {currentUser ? <p>Welcome, {currUser.displayName ?
                         currUser.displayName : currUser.email}</p> : <NavLink to={"log-in"}>Log In</NavLink>}
                     {currUser && <NavLink to={"/"} onClick={() => logOut()}>Log Out <LogoutOutlined /></NavLink>}

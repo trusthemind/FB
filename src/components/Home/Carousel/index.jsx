@@ -6,10 +6,11 @@ import zeabf from "./img/zeabf.webp"
 import japan_dragon from "./img/japan-dragon.webp"
 import japanOni from "./img/japanoni.webp"
 import "../style.scss"
+import {Card} from "antd"
 
 function Carousel() {
     return (
-        <>
+        <Card className="carousel-card">
         <p>Our Work</p>
         <Swipper autoplay
         className='carousel'
@@ -21,7 +22,7 @@ function Carousel() {
         <img src={zeabf} alt="Tatto" />
         <img src={medusa} alt="Tatto" />
         </Swipper>
-        </>
+        </Card>
     );
 }
 
