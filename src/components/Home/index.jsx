@@ -4,7 +4,7 @@ import Carousel from './Carousel';
 import { Card } from 'antd';
 import TomMap from '../Map';
 import "./style.scss"
-import IdeaGenerator from '../TattoIdea';
+import ItemMap from '../TattoIdea';
 import TestimonialsComponent from '../Testimonials';
 import TeamComponent from '../../pages/Team';
 
@@ -25,7 +25,7 @@ const Home = () => {
                     </div>
                     <Carousel />
                     <TomMap />
-                    <IdeaGenerator />
+                    <ItemMap />
                     <TestimonialsComponent />
                     <TeamComponent />
                 </Card>

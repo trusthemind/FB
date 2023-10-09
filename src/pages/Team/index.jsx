@@ -5,13 +5,12 @@ import { setArtisttoState } from "../../services/action"
 import { artistsURL } from "../../services/constantUrl";
 import { Card, Image, Tooltip } from "antd";
 import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
+import { isHomePage } from "../../services/useIsPage";
 import PageEntry from "../../components/PageEntry";
 import "./style.scss"
 
 function TeamComponent({ setArtisttoState }) {
     const { data, isLoading } = useGetAllArtistsQuery();
-    //ToDo is homepage hook 
-    const isHomePage = location.pathname === "/";
 
     useEffect(() => {
         setArtisttoState(data)
@@ -19,7 +18,7 @@ function TeamComponent({ setArtisttoState }) {
 
     return (
         <>
-            {!isHomePage && <PageEntry title={"Our team"}/>}
+            {!isHomePage() && <PageEntry title={"Our team"}/>}
             <div className="container">
                 {isLoading ? (
                     <div style={{ "color": "white" }}>Loading...</div>

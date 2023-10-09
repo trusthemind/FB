@@ -59,6 +59,11 @@ function Layout({ theme, changeTheme, setUsertoState, user }) {
                                 <h2 className="header-nav-link">team</h2>
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to={"/works"}>
+                                <h2 className="header-nav-link">works</h2>
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
                 </div>
