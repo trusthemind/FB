@@ -1,29 +1,34 @@
-import { Carousel as Swipper } from "antd";
-import athena from "./img/athena.webp"
-import hecate from "./img/hecate.webp"
-import medusa from "./img/medusa.webp"
-import zeabf from "./img/zeabf.webp"
-import japan_dragon from "./img/japan-dragon.webp"
-import japanOni from "./img/japanoni.webp"
+import { Carousel as Swipper, Card } from "antd";
 import "../style.scss"
-import {Card} from "antd"
+import { connect } from "react-redux";
+import { tattosURL } from "../../../services/constantUrl";
 
-function Carousel() {
+function Carousel({ tattos }) {
+    console.log(tattos.slice(134, 149));
+    // todo fix carousel
     return (
         <Card className="carousel-card">
-        <p>Our Work</p>
-        <Swipper autoplay
-        className='carousel'
-        dotPosition='bottom'>
-        <img src={athena} alt="Tatto" />
-        <img src={hecate} alt="Tatto" />
-        <img src={japan_dragon} alt="Tatto" />
-        <img src={japanOni} alt="Tatto" />
-        <img src={zeabf} alt="Tatto" />
-        <img src={medusa} alt="Tatto" />
-        </Swipper>
+            <p>Our Work</p>
+            <Swipper autoplay
+                className='carousel'
+                dotPosition='bottom'>
+                {tattos?.slice(134, 149).map((item) => {
+                    <img src={tattosURL + item?.url} alt="Tatto" />
+                })}
+            </Swipper>
         </Card>
     );
 }
+const mapState = (state) => {
+    return {
+        tattos: state.reducer.tattoideas,
+    };
+};
 
-export default Carousel;
+const mapDispatch = (dispatch) => {
+    return {
+
+    };
+};
+
+export default connect(mapState, mapDispatch)(Carousel);
