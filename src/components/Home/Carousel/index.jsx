@@ -1,22 +1,34 @@
-import { Carousel as Swipper, Card } from "antd";
+import { Carousel as Swipper } from "antd";
+import React, { useEffect, useState } from "react";
 import "../style.scss"
 import { connect } from "react-redux";
 import { tattosURL } from "../../../services/constantUrl";
 
 function Carousel({ tattos }) {
-    console.log(tattos.slice(134, 149));
-    // todo fix carousel
+    const [tattoArray, setTattoArray] = useState([])
+
+    useEffect(() => {
+        //134 149
+        setTattoArray(tattos?.slice(380));
+    }, [tattos])
+
+    if (tattoArray == []) {
+        return (<p>Loading</p>)
+    }
+
     return (
-        <Card className="carousel-card">
+        <div className="carousel-card">
             <p>Our Work</p>
             <Swipper autoplay
                 className='carousel'
                 dotPosition='bottom'>
-                {tattos?.slice(134, 149).map((item) => {
-                    <img src={tattosURL + item?.url} alt="Tatto" />
+                {tattoArray?.map((item,index) => {
+                    return (
+                            <img key={index} src={tattosURL + item?.url} />
+                    );
                 })}
             </Swipper>
-        </Card>
+        </div>
     );
 }
 const mapState = (state) => {
@@ -25,10 +37,4 @@ const mapState = (state) => {
     };
 };
 
-const mapDispatch = (dispatch) => {
-    return {
-
-    };
-};
-
-export default connect(mapState, mapDispatch)(Carousel);
+export default connect(mapState)(Carousel);

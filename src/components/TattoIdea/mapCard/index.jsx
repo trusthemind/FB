@@ -24,15 +24,15 @@ function MapCard({ array }) {
     return (
         <>
             <Card className="photoCard">
-                {content.map((item) =>
+                {content.map((item,index) =>
                     <Image
-                        key={item.id}
+                        key={index}
                         className="card-item"
                         src={!isHttpOrHttps(item.url) ? tattosURL + item?.url : item?.url}
                     />
                 )}
             </Card>
-            <Pagination total={array.length} current={page.pageNumber} showLessItems={true}
+            <Pagination total={array.length} pageSize={page.pageSize} current={page.pageNumber} showLessItems={true}
                 showSizeChanger={false} onChange={paginationChange} />
         </>
     )
