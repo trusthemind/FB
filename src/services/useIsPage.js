@@ -1,3 +1,3 @@
 export const isHomePage = () => {
-    return location.pathname === "/";
-};
+    return location.pathname === '/'
+}
