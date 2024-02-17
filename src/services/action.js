@@ -1,27 +1,26 @@
-export const changeTheme = (data) => {
+export const changeTheme = data => {
     return {
-        type: "CHANGE_THEME",
+        type: 'CHANGE_THEME',
         payload: data,
     }
 }
-export const setTattoIdeastoState = (data) => {
+export const setTattoIdeastoState = data => {
     return {
-        type: "GET_TATTO_IDEAS",
-        payload: data,
-    }
-}
-
-export const setArtisttoState = (data) => {
-    return {
-        type: "GET_ARTIST",
+        type: 'GET_TATTO_IDEAS',
         payload: data,
     }
 }
 
-export const setUsertoState = (data) => {
+export const setArtisttoState = data => {
     return {
-        type: "GET_USER",
+        type: 'GET_ARTIST',
         payload: data,
     }
 }
 
+export const setUsertoState = data => {
+    return {
+        type: 'GET_USER',
+        payload: data,
+    }
+}

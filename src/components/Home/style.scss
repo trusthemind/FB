@@ -66,27 +66,38 @@
     width: 100%;
     padding: 10px;
     border-radius: 20px;
-    .carousel-card {
+
+    .ant-card-body {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
 
-        p {
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            font-size: 24px;
-            margin: 0 0 5px 0;
-        }
+        .carousel-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
-        .carousel {
-            width: 40rem !important;
-            background-color: #000;
-
-            img {
-                width: 100%;
-                height: 40em;
-                filter: grayscale(100%);
-                object-fit: cover;
+            p {
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+                font-size: 24px;
+                color: #000;
+                margin: 0 0 5px 0;
             }
+
+                .carousel {
+                    height: auto;
+                    width: 460px !important;
+                    background-color: #000;
+
+                    img {
+                        height: 550px;
+                        width: 460px;
+                        filter: grayscale(100%);
+                        object-fit: cover;
+                    }
+                }
         }
     }
 }

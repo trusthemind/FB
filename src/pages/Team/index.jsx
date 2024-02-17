@@ -1,17 +1,16 @@
-import React, { useEffect, useLocation } from "react";
-import { useGetAllArtistsQuery } from "../../api/artists.api";
-import { connect } from "react-redux";
-import { setArtisttoState } from "../../services/action"
-import { artistsURL } from "../../services/constantUrl";
-import { Card, Image, Tooltip } from "antd";
-import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
-import PageEntry from "../../components/PageEntry";
-import "./style.scss"
+import React, { useEffect, useLocation } from 'react'
+import { useGetAllArtistsQuery } from '../../api/artists.api'
+import { connect } from 'react-redux'
+import { setArtisttoState } from '../../services/action'
+import { artistsURL } from '../../services/constantUrl'
+import { Card, Image, Tooltip } from 'antd'
+import { FacebookOutlined, InstagramOutlined } from '@ant-design/icons'
+import { isHomePage } from '../../services/useIsPage'
+import PageEntry from '../../components/PageEntry'
+import './style.scss'
 
 function TeamComponent({ setArtisttoState }) {
-    const { data, isLoading } = useGetAllArtistsQuery();
-    //ToDo is homepage hook 
-    const isHomePage = location.pathname === "/";
+    const { data, isLoading } = useGetAllArtistsQuery()
 
     useEffect(() => {
         setArtisttoState(data)
@@ -19,53 +18,92 @@ function TeamComponent({ setArtisttoState }) {
 
     return (
         <>
-            {!isHomePage && <PageEntry title={"Our team"}/>}
+            {!isHomePage() && <PageEntry title={'Our team'} />}
             <div className="container">
                 {isLoading ? (
-                    <div style={{ "color": "white" }}>Loading...</div>
+                    <div style={{ color: 'white' }}>Loading...</div>
                 ) : (
                     <Card className="artist-grid">
-                        {data.map((item, index) =>
+                        {data.map((item, index) => (
                             <div className="item-container" key={index}>
                                 <Card className="artist-item-card">
-                                    {item?.profilepicture ?
-                                        <Image className="artist-item-image"
-                                            src={artistsURL + item?.profilepicture} preview={false} width={300} height={300} />
-                                        : <></>
-                                    }
-                                    <h2 className="item-name">{item.name}
-                                        {item.facebook ? <a href={item.facebook}><FacebookOutlined /></a> : <></>}
-                                        {item.instagram ? <a href={item.instagram}><InstagramOutlined /></a> : <></>}
+                                    {item?.profilepicture ? (
+                                        <Image
+                                            className="artist-item-image"
+                                            src={artistsURL + item?.profilepicture}
+                                            preview={false}
+                                            width={300}
+                                            height={300}
+                                        />
+                                    ) : (
+                                        <></>
+                                    )}
+                                    <h2 className="item-name">
+                                        {item.name}
+                                        {item.facebook ? (
+                                            <a href={item.facebook}>
+                                                <FacebookOutlined />
+                                            </a>
+                                        ) : (
+                                            <></>
+                                        )}
+                                        {item.instagram ? (
+                                            <a href={item.instagram}>
+                                                <InstagramOutlined />
+                                            </a>
+                                        ) : (
+                                            <></>
+                                        )}
                                     </h2>
-                                    {item.subtitle ? <h3 className="item-subtitle">{item.subtitle}</h3> : <></>}
+                                    {item.subtitle ? (
+                                        <h3 className="item-subtitle">{item.subtitle}</h3>
+                                    ) : (
+                                        <></>
+                                    )}
                                     <p className="item-city">
-                                        {item.address ? <Tooltip title={item.address} arrow={false} color={"#ef233c"}>{item.city}</Tooltip> : <>{item.city}</>}
+                                        {item.address ? (
+                                            <Tooltip
+                                                title={item.address}
+                                                arrow={false}
+                                                color={'#ef233c'}
+                                            >
+                                                {item.city}
+                                            </Tooltip>
+                                        ) : (
+                                            <>{item.city}</>
+                                        )}
                                     </p>
                                     {item.bio ? <p className="bio">{item.bio}</p> : <></>}
-                                    {item.tags && item.tags.length > 0 ? <div className="tags">
-                                        {item.tags.map((tag, index) =>
-                                            <span className="tag-item" key={index}>#{tag.name}</span>
-                                        )}
-                                    </div> : <></>}
+                                    {item.tags && item.tags.length > 0 ? (
+                                        <div className="tags">
+                                            {item.tags.map((tag, index) => (
+                                                <span className="tag-item" key={index}>
+                                                    #{tag.name}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </Card>
                             </div>
-                        )}
+                        ))}
                     </Card>
                 )}
             </div>
         </>
-    );
+    )
 }
-const mapState = (state) => {
+const mapState = state => {
     return {
-        artists: state.artists
-    };
-};
+        artists: state.artists,
+    }
+}
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = dispatch => {
     return {
-        setArtisttoState: (val) => dispatch(setArtisttoState(val))
-    };
-};
+        setArtisttoState: val => dispatch(setArtisttoState(val)),
+    }
+}
 
-export default connect(mapState, mapDispatch)(TeamComponent);
+export default connect(mapState, mapDispatch)(TeamComponent)

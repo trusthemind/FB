@@ -1,13 +1,13 @@
 import React from 'react'
-import "./style.scss"
+import './style.scss'
 
 const PageEntry = ({ title, text }) => {
     return (
-        <div className='Entry'>
+        <div className="Entry">
             {title && <h1>{title}</h1>}
             {text && <p>{text}</p>}
         </div>
     )
 }
 
-export default PageEntry;
+export default PageEntry

@@ -1,7 +1,57 @@
-.photoCard {
-    .card-item {
-        margin: 1.5px;
-        width: 200px;
-        height: 250px;
+.works-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 600px;
+    height: auto;
+    border-radius: 20px;
+
+    .ant-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .photoCard {
+            .ant-card-body {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                .card-item {
+                    margin: 1.5px;
+                    width: 200px;
+                    height: 250px;
+                }
+            }
+        }
+    }
+
+    .ant-pagination-item {
+        border-color: #000 !important;
+
+        a {
+            &:hover {
+                color: #ef233c !important;
+            }
+        }
+    }
+
+    .ant-pagination-item-active,.ant-pagination-item-container {
+        a,span {
+            color: #000 !important;
+        }
+    }
+
+    .ant-pagination-item-ellipsis,
+    .ant-pagination-item-link {
+        color: #ef233c !important;
+
+        &:hover {
+            color: #ef233c !important;
+            border-color: #000 !important;
+        }
     }
 }

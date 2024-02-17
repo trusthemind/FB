@@ -1,29 +1,36 @@
-import { Carousel as Swipper } from "antd";
-import athena from "./img/athena.webp"
-import hecate from "./img/hecate.webp"
-import medusa from "./img/medusa.webp"
-import zeabf from "./img/zeabf.webp"
-import japan_dragon from "./img/japan-dragon.webp"
-import japanOni from "./img/japanoni.webp"
-import "../style.scss"
-import {Card} from "antd"
+import { Carousel as Swipper } from 'antd'
+import React, { useEffect, useState } from 'react'
+import '../style.scss'
+import { connect } from 'react-redux'
+import { tattosURL } from '../../../services/constantUrl'
 
-function Carousel() {
+function Carousel({ tattos }) {
+    const [tattoArray, setTattoArray] = useState([])
+
+    useEffect(() => {
+        //134 149
+        setTattoArray(tattos?.slice(380))
+    }, [tattos])
+
+    if (tattoArray == []) {
+        return <p>Loading</p>
+    }
+
     return (
-        <Card className="carousel-card">
-        <p>Our Work</p>
-        <Swipper autoplay
-        className='carousel'
-        dotPosition='bottom'>
-        <img src={athena} alt="Tatto" />
-        <img src={hecate} alt="Tatto" />
-        <img src={japan_dragon} alt="Tatto" />
-        <img src={japanOni} alt="Tatto" />
-        <img src={zeabf} alt="Tatto" />
-        <img src={medusa} alt="Tatto" />
-        </Swipper>
-        </Card>
-    );
+        <div className="carousel-card">
+            <p>Our Work</p>
+            <Swipper autoplay className="carousel" dotPosition="bottom">
+                {tattoArray?.map((item, index) => {
+                    return <img key={index} src={tattosURL + item?.url} />
+                })}
+            </Swipper>
+        </div>
+    )
+}
+const mapState = state => {
+    return {
+        tattos: state.reducer.tattoideas,
+    }
 }
 
-export default Carousel;
+export default connect(mapState)(Carousel)
